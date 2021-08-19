@@ -32,15 +32,40 @@ interface VideoDao {
     fun insertAll(vararg videos: DatabaseVideo)
 }
 
-// TODO (01) Create an abstract VideosDatabase class that extends RoomDatabase.
+/* TODO (01) Crea una classe astratta VideosDatabase che estende RoomDataBase e crea una variabile astratta val videoDao
+    Completata con entities e versione
+    @Database(entities = [DatabaseVideo::class], version = 1)
+    abstract class VideosDatabase : RoomDatabase() {
+    abstract val videoDao: VideoDao
+    }
+ */
 
-// TODO (02) Annotate VideosDatabase with @Database,including entities and version.
+/* TODO (04) Create an INSTANCE variable to store the VideosDatabase singleton.
+    private lateinit var INSTANCE: VideosDatabase
+ */
 
-// TODO (03) Inside VideosDatabase, create abstract val videoDao.
 
-// TODO (04) Create an INSTANCE variable to store the VideosDatabase singleton.
+/* TODO (05) Define a function getDatabase() that returns the VideosDatabase INSTANCE.
+    fun getDatabase(context: Context): VideosDatabase {
+    if (!::INSTANCE.isInitialized) {
+            INSTANCE = Room.databaseBuilder(context.applicationContext,
+                    VideosDatabase::class.java,
+                    "videos").build()
+    }
+        return INSTANCE
+    }
+*/
 
-// TODO (05) Define a function getDatabase() that returns the VideosDatabase INSTANCE.
-
-// TODO (06) Inside getDatabase(), before returning INSTANCE, use a synchronized{} block to
-// check whether INSTANCE is initialized, and, if it isn’t, use DatabaseBuilder to create it.
+/* TODO (06) Inside getDatabase(), before returning INSTANCE, use a synchronized{} block to
+    check whether INSTANCE is initialized, and, if it isn’t, use DatabaseBuilder to create it.
+    fun getDatabase(context: Context): VideosDatabase {
+    synchronized(VideosDatabase::class.java) {
+        if (!::INSTANCE.isInitialized) {
+            INSTANCE = Room.databaseBuilder(context.applicationContext,
+                    VideosDatabase::class.java,
+                    "videos").build()
+        }
+    }
+    return INSTANCE
+    }
+ */
