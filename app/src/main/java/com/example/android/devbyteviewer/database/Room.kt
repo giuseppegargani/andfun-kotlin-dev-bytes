@@ -32,7 +32,7 @@ interface VideoDao {
     fun insertAll(vararg videos: DatabaseVideo)
 }
 
-/* TODO (01) Crea una classe astratta VideosDatabase che estende RoomDataBase e crea una variabile astratta val videoDao
+/* TODO (01) Crea una classe astratta VideosDatabase che estende RoomDataBase e crea una variabile astratta val videoDao (e con annotazione)
     Completata con entities e versione
     @Database(entities = [DatabaseVideo::class], version = 1)
     abstract class VideosDatabase : RoomDatabase() {
@@ -40,12 +40,12 @@ interface VideoDao {
     }
  */
 
-/* TODO (04) Create an INSTANCE variable to store the VideosDatabase singleton.
+/* TODO (02) Create an INSTANCE variable to store the VideosDatabase singleton.
     private lateinit var INSTANCE: VideosDatabase
  */
 
 
-/* TODO (05) Define a function getDatabase() that returns the VideosDatabase INSTANCE.
+/* TODO (03) Define a function getDatabase() that returns the VideosDatabase INSTANCE.
     fun getDatabase(context: Context): VideosDatabase {
     if (!::INSTANCE.isInitialized) {
             INSTANCE = Room.databaseBuilder(context.applicationContext,
@@ -56,7 +56,7 @@ interface VideoDao {
     }
 */
 
-/* TODO (06) Inside getDatabase(), before returning INSTANCE, use a synchronized{} block to
+/* TODO (04) Inside getDatabase(), before returning INSTANCE, use a synchronized{} block to
     check whether INSTANCE is initialized, and, if it isn’t, use DatabaseBuilder to create it.
     fun getDatabase(context: Context): VideosDatabase {
     synchronized(VideosDatabase::class.java) {
